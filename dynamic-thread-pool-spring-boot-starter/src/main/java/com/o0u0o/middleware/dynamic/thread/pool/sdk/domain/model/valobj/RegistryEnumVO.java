@@ -1,6 +1,7 @@
 package com.o0u0o.middleware.dynamic.thread.pool.sdk.domain.model.valobj;
 
 /**
+ * <h1>注册中心枚举值对象(Value Object)</h1>
  * @author o0u0o
  * @description 注册中心枚举值对象 key
  * @create 2024-05-12 16:26

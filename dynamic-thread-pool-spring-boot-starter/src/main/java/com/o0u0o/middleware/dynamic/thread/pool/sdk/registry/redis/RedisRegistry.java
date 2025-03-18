@@ -11,6 +11,7 @@ import java.time.Duration;
 import java.util.List;
 
 /**
+ * <h1>Redis 注册中心</h1>
  * @author o0u0o
  * @description Redis 注册中心
  * @create 2024-05-12 16:22
@@ -23,6 +24,7 @@ public class RedisRegistry implements IRegistry {
         this.redissonClient = redissonClient;
     }
 
+
     @Override
     public void reportThreadPool(List<ThreadPoolConfigEntity> threadPoolEntities) {
         RList<ThreadPoolConfigEntity> list = redissonClient.getList(RegistryEnumVO.THREAD_POOL_CONFIG_LIST_KEY.getKey());
@@ -34,6 +36,7 @@ public class RedisRegistry implements IRegistry {
     public void reportThreadPoolConfigParameter(ThreadPoolConfigEntity threadPoolConfigEntity) {
         String cacheKey = RegistryEnumVO.THREAD_POOL_CONFIG_PARAMETER_LIST_KEY.getKey() + "_" + threadPoolConfigEntity.getAppName() + "_" + threadPoolConfigEntity.getThreadPoolName();
         RBucket<ThreadPoolConfigEntity> bucket = redissonClient.getBucket(cacheKey);
+        //默认30天过期
         bucket.set(threadPoolConfigEntity, Duration.ofDays(30));
     }
 

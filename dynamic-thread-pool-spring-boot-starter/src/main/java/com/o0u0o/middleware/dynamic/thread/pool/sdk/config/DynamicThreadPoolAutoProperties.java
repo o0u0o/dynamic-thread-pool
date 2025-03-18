@@ -3,6 +3,7 @@ package com.o0u0o.middleware.dynamic.thread.pool.sdk.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
+ * <h1>动态线程池配置</h1>
  * @author o0u0o
  * @description 动态线程池配置
  * @create 2024-05-12 16:23

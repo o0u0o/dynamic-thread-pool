@@ -27,8 +27,10 @@ import java.util.Set;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
+ * <h1>动态配置入口</h1>
  * @author o0u0o
  * @description 动态配置入口
+ * 注解 @EnableScheduling 开启一个定时人那屋
  * @create 2024-05-12 15:37
  */
 @Configuration
@@ -66,6 +68,7 @@ public class DynamicThreadPoolAutoConfig {
         return redissonClient;
     }
 
+
     @Bean
     public IRegistry redisRegistry(RedissonClient dynamicThreadRedissonClient) {
         return new RedisRegistry(dynamicThreadRedissonClient);
@@ -75,8 +78,8 @@ public class DynamicThreadPoolAutoConfig {
      *
      * @param applicationContext 获取上下文，拿到应用的名字
      * @param threadPoolExecutorMap 线程池 使用Map去管理多个线程池
-     * @param redissonClient
-     * @return
+     * @param redissonClient Redisson客户端
+     * @return DynamicThreadPoolServiceDynamicThreadPoolService
      */
     @Bean("dynamicThreadPollService")
     public DynamicThreadPoolService dynamicThreadPollService(ApplicationContext applicationContext,

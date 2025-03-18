@@ -11,6 +11,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import java.util.List;
 
 /**
+ * <h2>线程池数据上报任务</h2>
  * @author o0u0o
  * @description 线程池数据上报任务
  * @create 2024-05-12 16:29
@@ -28,12 +29,17 @@ public class ThreadPoolDataReportJob {
         this.registry = registry;
     }
 
+    /**
+     * <h2>执行上报线程池数据</h2>
+     * 每20秒上报一次
+     */
     @Scheduled(cron = "0/20 * * * * ?")
     public void execReportThreadPoolList() {
         List<ThreadPoolConfigEntity> threadPoolConfigEntities = dynamicThreadPoolService.queryThreadPoolList();
         registry.reportThreadPool(threadPoolConfigEntities);
         logger.info("动态线程池，上报线程池信息：{}", JSON.toJSONString(threadPoolConfigEntities));
 
+        // 上报每一条的配置参数
         for (ThreadPoolConfigEntity threadPoolConfigEntity : threadPoolConfigEntities) {
             registry.reportThreadPoolConfigParameter(threadPoolConfigEntity);
             logger.info("动态线程池，上报线程池配置：{}", JSON.toJSONString(threadPoolConfigEntity));
