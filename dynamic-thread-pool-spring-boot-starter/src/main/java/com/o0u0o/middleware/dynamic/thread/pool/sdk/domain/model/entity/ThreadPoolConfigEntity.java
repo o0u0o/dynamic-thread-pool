@@ -1,6 +1,8 @@
 package com.o0u0o.middleware.dynamic.thread.pool.sdk.domain.model.entity;
 
 /**
+ * <h1>线程池配置实体对象</h1>
+ * 因为这个是公共组件，不建议使用lombok
  * @author o0u0o
  * @description 线程池配置实体对象
  * @create 2024-05-12 16:05

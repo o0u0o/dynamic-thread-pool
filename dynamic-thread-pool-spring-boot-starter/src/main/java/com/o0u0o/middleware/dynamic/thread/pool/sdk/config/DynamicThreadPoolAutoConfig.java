@@ -71,8 +71,17 @@ public class DynamicThreadPoolAutoConfig {
         return new RedisRegistry(dynamicThreadRedissonClient);
     }
 
+    /**
+     *
+     * @param applicationContext 获取上下文，拿到应用的名字
+     * @param threadPoolExecutorMap 线程池 使用Map去管理多个线程池
+     * @param redissonClient
+     * @return
+     */
     @Bean("dynamicThreadPollService")
-    public DynamicThreadPoolService dynamicThreadPollService(ApplicationContext applicationContext, Map<String, ThreadPoolExecutor> threadPoolExecutorMap, RedissonClient redissonClient) {
+    public DynamicThreadPoolService dynamicThreadPollService(ApplicationContext applicationContext,
+                                                             Map<String, ThreadPoolExecutor> threadPoolExecutorMap,
+                                                             RedissonClient redissonClient) {
         applicationName = applicationContext.getEnvironment().getProperty("spring.application.name");
 
         if (StringUtils.isBlank(applicationName)) {

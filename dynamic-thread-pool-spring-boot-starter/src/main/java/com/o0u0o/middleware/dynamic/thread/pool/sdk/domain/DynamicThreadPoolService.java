@@ -12,6 +12,7 @@ import java.util.Set;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
+ * <h1>动态线程池服务实现类</h1>
  * @author o0u0o
  * @description 动态线程池服务
  * @create 2024-05-12 16:08
@@ -19,8 +20,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class DynamicThreadPoolService implements IDynamicThreadPoolService {
 
     private final Logger logger = LoggerFactory.getLogger(DynamicThreadPoolService.class);
-
+    //应用名
     private final String applicationName;
+    //线程池信息
     private final Map<String, ThreadPoolExecutor> threadPoolExecutorMap;
 
     public DynamicThreadPoolService(String applicationName, Map<String, ThreadPoolExecutor> threadPoolExecutorMap) {
